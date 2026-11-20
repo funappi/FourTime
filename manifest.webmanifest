@@ -1,0 +1,20 @@
+{
+  "id": "./index.html",
+  "name": "FourTimer — multi-minuteur de four",
+  "short_name": "FourTimer",
+  "description": "Minuteurs de cuisson par place de four, 100 % hors ligne.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#ffffff",
+  "theme_color": "#ea580c",
+  "lang": "fr",
+  "categories": ["productivity", "food"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

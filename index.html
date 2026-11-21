@@ -276,6 +276,21 @@ aside.slide.out{transform:translateX(-110%);opacity:0}
 .acts{flex-wrap:nowrap;overflow:hidden;max-width:100%}
 .acts button{min-width:0;flex:1 1 0;overflow:hidden;white-space:nowrap}
 .top{flex-wrap:nowrap;min-width:0}
+/* carte prête compacte */
+.door[data-dens="2"] .tmr.done .rem,.door[data-dens="1"] .tmr.done .rem{font-size:18px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;-webkit-line-clamp:unset;line-height:1.25}
+@container (max-width:150px){.tmr.done .rem{font-size:13px!important}.tmr.done .el .l1{font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tmr.done .el .l2{display:none}}
+/* téléphone */
+.tabs{min-width:110px}
+@media (max-width:600px){
+ .top{gap:6px}.top .icon{width:40px;height:40px}.top .tools{gap:4px}
+ #bStopAll{padding:0;width:40px;height:40px;font-size:0;gap:0;justify-content:center}#bStopAll svg{width:18px;height:18px}
+ .tab{height:40px;padding:0 12px;font-size:14px}
+ .panel{gap:8px;padding:6px 10px}.panel .knob{display:none}.lbl{font-size:16px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+ .pstats{gap:8px;font-size:12px}.cs b{font-size:17px}.rename{width:34px;height:34px}
+ .door{padding:8px}
+}
+@media (max-width:600px){.lhead{display:none}.lrow{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 70px 40px;padding:8px;border-radius:var(--rs);background:var(--surf);border:var(--bw) solid var(--line)}.lrow input[data-k=name]{grid-column:1/-1}}
+@media (max-width:420px){.pstats .cs{flex-direction:column;gap:0;line-height:1.05;text-align:center}.cs i{display:none}}
 /* densité selon la hauteur disponible (fit() pose data-dens) */
 .door[data-dens="1"] .tmr,.door[data-dens="2"] .tmr{gap:5px;padding:6px 10px}
 .door[data-dens="1"] .acts button{height:34px}
@@ -284,11 +299,17 @@ aside.slide.out{transform:translateX(-110%);opacity:0}
 .door[data-dens="1"] .bar,.door[data-dens="2"] .bar{height:9px}
 .door[data-dens="1"] .rem{font-size:clamp(26px,3vw,36px)}
 .door[data-dens="2"] .rem{font-size:30px}
-.door[data-dens="2"] .acts,.door[data-dens="2"] .l2{display:none}
+.door[data-dens="2"] .l2{display:none}
+.door[data-dens="2"] .tmr{gap:3px;padding:5px 8px}
+.door[data-dens="2"] .t1{min-height:24px}.door[data-dens="2"] .tg{width:24px;height:24px}
+.door[data-dens="2"] .bar{height:7px}
+.door[data-dens="2"] .rem{font-size:clamp(20px,11cqw,26px)}
+.door[data-dens="2"] .acts{gap:4px}.door[data-dens="2"] .acts button{height:28px;font-size:13px;border-radius:8px}
 .door[data-dens="2"] .tmr.done .rem{font-size:20px}
 /* adaptation à la largeur de la carte */
 @container (max-width:215px){.acts button{height:34px;font-size:14px}.t1 .tp{display:none}.l2{display:none}}
-@container (max-width:150px){.acts{display:none}}
+@container (max-width:150px){.acts{gap:3px}.acts button{font-size:12px;height:30px}.acts [data-a="del"]{display:none}}
+@container (max-width:110px){.acts [data-a="adj"][data-s^="-"]{display:none}}
 .ghost-drag{position:fixed;z-index:99;pointer-events:none;transform:translate(-50%,-50%) rotate(-3deg);padding:12px 18px;border-radius:var(--rs);background:var(--acc);color:var(--accTxt);font-weight:800;box-shadow:0 18px 40px rgba(0,0,0,.35);border:var(--bw) solid var(--bc)}
 
 /* ---------- MODALES ---------- */
@@ -600,7 +621,7 @@ function fit(){
   const H=d.clientHeight-24-10*(o.levels-1);
   const h=Math.floor(H/o.levels)-22;
   d.dataset.dens=h>=170?0:h>=138?1:2;
-  d.style.setProperty('--slotH',Math.max(96,Math.min(200,h))+'px');
+  d.style.setProperty('--slotH',Math.max(112,Math.min(200,h))+'px');
 }
 function renderOven(){
   const o=curOven();$('#ovName').textContent=o.name;document.querySelector('main').style.setProperty('--oc',(o.color&&st.ovcPanel)?o.color:'var(--acc)');$('.panel').classList.toggle('tint',!!(o.color&&st.ovcPanel));

@@ -1,6 +1,6 @@
 // FourTimer — service worker : app 100 % hors ligne.
 // Pour publier une mise à jour, change simplement le numéro de VERSION.
-const VERSION = 'fourtimer-v10';
+const VERSION = 'fourtimer-v11';
 const FILES = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png', './icon-maskable.png', './favicon.svg'];
 
 self.addEventListener('install', e => {

@@ -753,7 +753,7 @@ document.addEventListener('pointerdown',()=>{unlockAudio();if(st.keep&&(!ka||ka.
       (boucle silencieuse qui empêche l'OS de geler la page ; dépend de la tablette).   */
 const NAT=()=>{try{const C=window.Capacitor;return C&&C.isNativePlatform&&C.isNativePlatform()?C.Plugins.LocalNotifications:null}catch(e){return null}};
 let swReg=null,ka=null,wl=null,wlWant=false,deferredPrompt=null;
-try{if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))navigator.serviceWorker.register('sw.js').then(r=>{swReg=r;showInstallBar()}).catch(()=>{})}catch(e){}
+try{if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).then(r=>{swReg=r;showInstallBar();r.update().catch(()=>{});document.addEventListener('visibilitychange',()=>{if(!document.hidden)r.update().catch(()=>{})})}).catch(()=>{});let swHad=!!navigator.serviceWorker.controller,swRl=false;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(swHad&&!swRl&&!document.querySelector('.modal.on')){swRl=true;location.reload()}swHad=true})}catch(e){}
 try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
 const idOf=k=>{let h=0;for(const c of k)h=(h*31+c.charCodeAt(0))|0;return Math.abs(h)%2000000000+1};
 (async()=>{const N=NAT();if(N&&N.createChannel){try{await N.createChannel({id:'fourtimer-alarm',name:'Alarmes cuisine',description:'Fin de cuisson',importance:5,visibility:1,vibration:true})}catch(e){}}})();
